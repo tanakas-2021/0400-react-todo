@@ -29,6 +29,8 @@ export default function Home() {
   };
 
   const addOnClick = () => {
+    setTaskName("");
+    setDueDate("");
     const newTasks = [
       ...tasks,
       { taskName: taskName, dueDate: dueDate, isDone: false },
@@ -63,14 +65,15 @@ export default function Home() {
               />
             </div>
             <div className={styles.inputDate}>
-              <label
-                className={styles.inputLabel}
-                onChange={(e) => setDueDate(e.target.value)}
-                value={dueDate}
-              >
+              <label className={styles.inputLabel} value={dueDate}>
                 期限日
               </label>
-              <input className={styles.input} type="date" />
+              <input
+                className={styles.input}
+                type="date"
+                onChange={(e) => setDueDate(e.target.value)}
+                value={dueDate}
+              />
             </div>
           </div>
           <div className={styles.formFooter}>
