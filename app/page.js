@@ -20,10 +20,10 @@ export default function Home() {
     setIsDisplayDone(newIsDisplayDone);
   };
 
-  const handleCheckboxClick = (index) => {
+  const doneTask = (index) => {
     setTasks((prevTasks) =>
       prevTasks.map((task, i) =>
-        i === index ? { ...task, isDone: !task.isDone } : task
+        i === index ? { ...task, isDone: true } : task
       )
     );
   };
@@ -36,13 +36,21 @@ export default function Home() {
     setTasks(newTasks);
   };
 
+  const deleteOnClick = (index) => {
+    const isConfirmed = window.confirm("タスクを削除しますか？");
+    if (isConfirmed) {
+      const newTasks = tasks.filter((task, taskIndex) => taskIndex !== index);
+      setTasks(newTasks);
+    }
+  };
+
   return (
     <>
       <header className={styles.header}>
         <h1 className={styles.title}>Todo</h1>
       </header>
       <main className={styles.main}>
-        <form className={styles.form}>
+        <div className={styles.form}>
           <div className={styles.formGroups}>
             <div className={styles.inputTask}>
               <label className={styles.inputLabel}>タスク</label>
@@ -66,9 +74,11 @@ export default function Home() {
             </div>
           </div>
           <div className={styles.formFooter}>
-            <button className={styles.button}>追加</button>
+            <button className={styles.button} onClick={addOnClick}>
+              追加
+            </button>
           </div>
-        </form>
+        </div>
         <div>
           <div className={styles.tableSetting}>
             <label>
@@ -84,29 +94,39 @@ export default function Home() {
           </div>
           <div>
             {tasks.map((task, index) => {
-              return (
-                <div className={styles.tableRow} key={index}>
-                  <div className={styles.tableCellCenter}>
-                    <div
-                      className={
-                        task.isDone ? styles.checkboxChecked : styles.checkbox
-                      }
-                    >
-                      <div onClick={() => handleCheckboxClick(index)}>
-                        <FontAwesomeIcon icon={faCheck} size="2x" />
+              //isDisplayDone(完了タスクの表示非表示)=falseかつ、タスクが完了の場合、そのタスクは表示しない
+              if (!isDisplayDone && task.isDone === true) {
+                return null;
+              } else {
+                return (
+                  <div className={styles.tableRow} key={index}>
+                    <div className={styles.tableCellCenter}>
+                      <div
+                        className={
+                          task.isDone ? styles.checkboxChecked : styles.checkbox
+                        }
+                      >
+                        <div>
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            size="2x"
+                            onClick={() => doneTask(index)}
+                          />
+                        </div>
                       </div>
                     </div>
+                    <div className={styles.tableCellTask}>{task.taskName}</div>
+                    <div className={styles.tableCell}>{task.dueDate}</div>
+                    <div className={styles.tableCellCenter}>
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        className={styles.trashIcon}
+                        onClick={() => deleteOnClick(index)}
+                      />
+                    </div>
                   </div>
-                  <div className={styles.tableCellTask}>{task.taskName}</div>
-                  <div className={styles.tableCell}>{task.dueDate}</div>
-                  <div className={styles.tableCellCenter}>
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className={styles.trashIcon}
-                    />
-                  </div>
-                </div>
-              );
+                );
+              }
             })}
           </div>
         </div>
