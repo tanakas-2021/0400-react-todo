@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./page.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const [taskName, setTaskName] = useState("");
@@ -99,7 +99,12 @@ export default function Home() {
                   </div>
                   <div className={styles.tableCellTask}>{task.taskName}</div>
                   <div className={styles.tableCell}>{task.dueDate}</div>
-                  <div className={styles.tableCell}></div>
+                  <div className={styles.tableCellCenter}>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className={styles.trashIcon}
+                    />
+                  </div>
                 </div>
               );
             })}

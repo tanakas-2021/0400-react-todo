@@ -116,12 +116,16 @@ $iconColor: #666;
     }
     .checkboxChecked {
       @extend .checkbox;
-      background-color: #7a72ff;
+      background-color: $primartColor;
     }
   }
   .tableCellCenter {
     @extend .tableCell;
     justify-content: center;
+    .trashIcon {
+      cursor: pointer;
+      font-size: 1rem
+    }
   }
   .tableCellTask {
     @extend .tableCell;
