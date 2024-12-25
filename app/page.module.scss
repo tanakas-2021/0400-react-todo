@@ -1,0 +1,130 @@
+$borderColor: rgb(240, 240, 240);
+$primartColor: #7a72ff;
+$fontColorLight: #fefefe;
+$fontWeakText: #c6c6c6;
+$iconColor: #666;
+
+.header {
+  padding: 16px 32px;
+  border-bottom: 1px solid $borderColor;
+  .title {
+    font-size: 16px;
+    margin: 0;
+  }
+}
+
+.main {
+  max-width: 986px;
+  margin: 64px auto;
+  box-sizing: border-box;
+  .form {
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    border: 1px solid $borderColor;
+    border-radius: 8px;
+    display: block;
+    margin-top: 0em;
+    unicode-bidi: isolate;
+    .formGroups {
+      display: flex;
+      .inputTask {
+        flex: 4 1;
+        padding: 8px 16px;
+        .inputLabel {
+          display: block;
+          font-size: 12px;
+          margin-bottom: 4px;
+        }
+        .input {
+          padding: 8px;
+          border-radius: 8px;
+          border: 1px solid $borderColor;
+          width: 100%;
+        }
+      }
+      .inputDate {
+        flex: 1 1;
+        padding: 8px 16px;
+        .inputLabel {
+          display: block;
+          font-size: 12px;
+          margin-bottom: 4px;
+        }
+        .input {
+          padding: 8px;
+          border-radius: 8px;
+          border: 1px solid $borderColor;
+          width: 100%;
+        }
+      }
+    }
+    .formFooter {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+      .button {
+        background-color: $primartColor;
+        color: $fontColorLight;
+      }
+    }
+  }
+  .tableSetting {
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+  }
+  .tableHeader {
+    display: flex;
+    border-bottom: 1px solid $borderColor;
+    .tableHeaderCell {
+      padding: 8px 16px;
+      font-size: 12px;
+      flex: 1 1;
+      border-right: 1px solid $borderColor;
+    }
+    .tableHeaderCellTask {
+      padding: 8px 16px;
+      font-size: 12px;
+      flex: 4 1;
+      border-right: 1px solid $borderColor;
+    }
+  }
+  .tableRow {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $borderColor;
+    transition: 1s;
+  }
+  .tableCell {
+    padding: 16px;
+    flex: 1 1;
+    border-right: 1px solid $borderColor;
+    display: flex;
+    align-items: center;
+    .checkbox {
+      cursor: pointer;
+      border: 1px solid $fontWeakText;
+      border-radius: 50%;
+      height: 28px;
+      width: 28px;
+      padding: 4px;
+      color: $fontColorLight;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .checkboxChecked {
+      @extend .checkbox;
+      background-color: #7a72ff;
+    }
+  }
+  .tableCellCenter {
+    @extend .tableCell;
+    justify-content: center;
+  }
+  .tableCellTask {
+    @extend .tableCell;
+    flex: 4 1;
+  }
+}
