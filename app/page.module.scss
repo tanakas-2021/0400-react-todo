@@ -13,57 +13,6 @@
   max-width: 986px;
   margin: 64px auto;
   box-sizing: border-box;
-  .form {
-    padding: 8px 16px;
-    margin-bottom: 32px;
-    border: 1px solid vars.$borderColor;
-    border-radius: 8px;
-    display: block;
-    margin-top: 0em;
-    unicode-bidi: isolate;
-    .formGroups {
-      display: flex;
-      .inputTask {
-        flex: 4 1;
-        padding: 8px 16px;
-        .inputLabel {
-          display: block;
-          font-size: 12px;
-          margin-bottom: 4px;
-        }
-        .input {
-          padding: 8px;
-          border-radius: 8px;
-          border: 1px solid vars.$borderColor;
-          width: 100%;
-        }
-      }
-      .inputDate {
-        flex: 1 1;
-        padding: 8px 16px;
-        .inputLabel {
-          display: block;
-          font-size: 12px;
-          margin-bottom: 4px;
-        }
-        .input {
-          padding: 8px;
-          border-radius: 8px;
-          border: 1px solid vars.$borderColor;
-          width: 100%;
-        }
-      }
-    }
-    .formFooter {
-      display: flex;
-      justify-content: flex-end;
-      padding: 10px;
-      .button {
-        background-color: vars.$primartColor;
-        color: vars.$fontColorLight;
-      }
-    }
-  }
   .tableSetting {
     margin-bottom: 32px;
     display: flex;

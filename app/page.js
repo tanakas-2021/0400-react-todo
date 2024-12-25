@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./page.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { InputTodo } from "./components/InputTodo";
 
 export default function Home() {
   const [taskName, setTaskName] = useState("");
@@ -19,23 +20,12 @@ export default function Home() {
     const newIsDisplayDone = !isDisplayDone;
     setIsDisplayDone(newIsDisplayDone);
   };
-
   const doneTask = (index) => {
     setTasks((prevTasks) =>
       prevTasks.map((task, i) =>
         i === index ? { ...task, isDone: true } : task
       )
     );
-  };
-
-  const addOnClick = () => {
-    setTaskName("");
-    setDueDate("");
-    const newTasks = [
-      ...tasks,
-      { taskName: taskName, dueDate: dueDate, isDone: false },
-    ];
-    setTasks(newTasks);
   };
 
   const deleteOnClick = (index) => {
@@ -52,36 +42,7 @@ export default function Home() {
         <h1 className={styles.title}>Todo</h1>
       </header>
       <main className={styles.main}>
-        <div className={styles.form}>
-          <div className={styles.formGroups}>
-            <div className={styles.inputTask}>
-              <label className={styles.inputLabel}>タスク</label>
-              <input
-                className={styles.input}
-                placeholder="タスク名を入力"
-                type="text"
-                onChange={(e) => setTaskName(e.target.value)}
-                value={taskName}
-              />
-            </div>
-            <div className={styles.inputDate}>
-              <label className={styles.inputLabel} value={dueDate}>
-                期限日
-              </label>
-              <input
-                className={styles.input}
-                type="date"
-                onChange={(e) => setDueDate(e.target.value)}
-                value={dueDate}
-              />
-            </div>
-          </div>
-          <div className={styles.formFooter}>
-            <button className={styles.button} onClick={addOnClick}>
-              追加
-            </button>
-          </div>
-        </div>
+        <InputTodo tasks={tasks} setTasks={setTasks} taskName={taskName} setTaskName={setTaskName} dueDate={dueDate} setDueDate={setDueDate}/>
         <div>
           <div className={styles.tableSetting}>
             <label>
