@@ -8,11 +8,37 @@ export const Form = ({
   dueDate,
   setDueDate,
 }) => {
+  const validateRequiredFields = () => {
+    if (taskName === "") {
+      window.alert("タスク名を入力してください");
+      return false;
+    } else if (dueDate === "") {
+      window.alert("期限日を入力してください");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  const validateDueDate = () => {
+    const today = new Date().setHours(0, 0, 0, 0);
+    const inputDate = new Date(dueDate).setHours(0, 0, 0, 0);
+
+    if (inputDate <= today) {
+      window.alert("期限日は今日以降を指定してください");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const onSubmit = () => {
-    setTaskName("");
-    setDueDate("");
-    const newTasks = [...tasks, { name: taskName, dueDate, isDone: false }];
-    setTasks(newTasks);
+    if (validateRequiredFields() && validateDueDate()) {
+      setTaskName("");
+      setDueDate("");
+      const newTasks = [...tasks, { name: taskName, dueDate, isDone: false }];
+      setTasks(newTasks);
+    }
   };
 
   return (
