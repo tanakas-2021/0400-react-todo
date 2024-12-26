@@ -41,7 +41,7 @@ export const Form = ({
         </div>
       </div>
       <div className={styles.formFooter}>
-        <button className={styles.button} onClick={onSubmit}>
+        <button className={styles.addButton} onClick={onSubmit}>
           追加
         </button>
       </div>

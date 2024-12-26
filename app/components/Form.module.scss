@@ -8,46 +8,37 @@
   display: block;
   margin-top: 0em;
   unicode-bidi: isolate;
-  .formGroups {
-    display: flex;
-    .inputTask {
-      flex: 4 1;
-      padding: 8px 16px;
-      .inputLabel {
-        display: block;
-        font-size: 12px;
-        margin-bottom: 4px;
-      }
-      .input {
-        padding: 8px;
-        border-radius: 8px;
-        border: 1px solid vars.$borderColor;
-        width: 100%;
-      }
-    }
-    .inputDate {
-      flex: 1 1;
-      padding: 8px 16px;
-      .inputLabel {
-        display: block;
-        font-size: 12px;
-        margin-bottom: 4px;
-      }
-      .input {
-        padding: 8px;
-        border-radius: 8px;
-        border: 1px solid vars.$borderColor;
-        width: 100%;
-      }
-    }
-  }
-  .formFooter {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-    .button {
-      background-color: vars.$primartColor;
-      color: vars.$fontColorLight;
-    }
-  }
+}
+.formGroups {
+  display: flex;
+}
+.inputTask {
+  flex: 4 1;
+  padding: 8px 16px;
+}
+.inputLabel {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid vars.$borderColor;
+  width: 100%;
+}
+
+.inputDate {
+  flex: 1 1;
+  padding: 8px 16px;
+}
+
+.formFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.addButton {
+  background-color: vars.$primartColor;
+  color: vars.$fontColorLight;
 }
