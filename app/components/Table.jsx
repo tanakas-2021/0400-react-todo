@@ -24,6 +24,8 @@ export const Table = ({ tasks, setTasks }) => {
     }
   };
 
+  const filteredTasks = tasks.filter((it) => isDisplayDone || !it.isDone);
+
   return (
     <div>
       <div className={styles.tableSetting}>
@@ -39,40 +41,35 @@ export const Table = ({ tasks, setTasks }) => {
         <div className={styles.tableHeaderCell}></div>
       </div>
       <div>
-        {tasks.map((task, index) => {
-          //isDisplayDone(完了タスクの表示非表示)=falseかつ、タスクが完了の場合、そのタスクは表示しない
-          if (!isDisplayDone && task.isDone === true) {
-            return null;
-          } else {
-            return (
-              <div className={styles.tableRow} key={index}>
-                <div className={styles.tableCellCenter}>
-                  <div
-                    className={
-                      task.isDone ? styles.checkboxChecked : styles.checkbox
-                    }
-                  >
-                    <div>
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        size="2x"
-                        onClick={() => doneTask(index)}
-                      />
-                    </div>
+        {filteredTasks.map((task, index) => {
+          return (
+            <div className={styles.tableRow} key={index}>
+              <div className={styles.tableCellCenter}>
+                <div
+                  className={
+                    task.isDone ? styles.checkboxChecked : styles.checkbox
+                  }
+                >
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      size="2x"
+                      onClick={() => doneTask(index)}
+                    />
                   </div>
                 </div>
-                <div className={styles.tableCellTask}>{task.name}</div>
-                <div className={styles.tableCell}>{task.dueDate}</div>
-                <div className={styles.tableCellCenter}>
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    className={styles.trashIcon}
-                    onClick={() => deleteOnClick(index)}
-                  />
-                </div>
               </div>
-            );
-          }
+              <div className={styles.tableCellTask}>{task.name}</div>
+              <div className={styles.tableCell}>{task.dueDate}</div>
+              <div className={styles.tableCellCenter}>
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  className={styles.trashIcon}
+                  onClick={() => deleteOnClick(index)}
+                />
+              </div>
+            </div>
+          );
         })}
       </div>
     </div>
