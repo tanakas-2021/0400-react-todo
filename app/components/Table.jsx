@@ -9,10 +9,10 @@ export const Table = ({ tasks, setTasks }) => {
     const newIsDisplayDone = !isDisplayDone;
     setIsDisplayDone(newIsDisplayDone);
   };
-  const doneTask = (index) => {
+  const toggleTaskStatus = (index) => {
     setTasks((prevTasks) =>
       prevTasks.map((task, i) =>
-        i === index ? { ...task, isDone: true } : task
+        i === index ? { ...task, isDone: !task.isDone } : task
       )
     );
   };
@@ -54,7 +54,7 @@ export const Table = ({ tasks, setTasks }) => {
                     <FontAwesomeIcon
                       icon={faCheck}
                       size="2x"
-                      onClick={() => doneTask(index)}
+                      onClick={() => toggleTaskStatus(index)}
                     />
                   </div>
                 </div>
