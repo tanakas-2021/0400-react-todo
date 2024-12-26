@@ -1,10 +1,9 @@
-import styles from "./Todostable.module.scss";
+import styles from "./Table.module.scss";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
-export const TodosTable = (props) => {
-  const { tasks, setTasks } = props;
+export const Table = ({ tasks, setTasks }) => {
   const [isDisplayDone, setIsDisplayDone] = useState(false);
   const handleIsDisplayDone = () => {
     const newIsDisplayDone = !isDisplayDone;
@@ -62,7 +61,7 @@ export const TodosTable = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className={styles.tableCellTask}>{task.taskName}</div>
+                <div className={styles.tableCellTask}>{task.name}</div>
                 <div className={styles.tableCell}>{task.dueDate}</div>
                 <div className={styles.tableCellCenter}>
                   <FontAwesomeIcon

@@ -1,14 +1,17 @@
-import styles from "./InputTodo.module.scss";
+import styles from "./Form.module.scss";
 
-export const InputTodo = (props) => {
-  const { tasks, setTasks, taskName, setTaskName, dueDate, setDueDate } = props;
-  const addOnClick = () => {
+export const Form = ({
+  tasks,
+  setTasks,
+  taskName,
+  setTaskName,
+  dueDate,
+  setDueDate,
+}) => {
+  const onSubmit = () => {
     setTaskName("");
     setDueDate("");
-    const newTasks = [
-      ...tasks,
-      { taskName: taskName, dueDate: dueDate, isDone: false },
-    ];
+    const newTasks = [...tasks, { name: taskName, dueDate, isDone: false }];
     setTasks(newTasks);
   };
 
@@ -38,7 +41,7 @@ export const InputTodo = (props) => {
         </div>
       </div>
       <div className={styles.formFooter}>
-        <button className={styles.button} onClick={addOnClick}>
+        <button className={styles.button} onClick={onSubmit}>
           追加
         </button>
       </div>
