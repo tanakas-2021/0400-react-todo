@@ -20,7 +20,7 @@ export default function Home() {
         <h1 className={styles.title}>Todo</h1>
       </header>
       <main className={styles.main}>
-        <Form tasks={tasks} setTasks={setTasks} taskName={taskName} setTaskName={setTaskName} dueDate={dueDate} setDueDate={setDueDate}/>
+        <Form tasks={tasks} setTasks={setTasks} taskName={taskName} onChangeName={setTaskName} dueDate={dueDate} onChangeDueDate={setDueDate}/>
         <Table tasks={tasks} setTasks={setTasks} />
       </main>
     </>

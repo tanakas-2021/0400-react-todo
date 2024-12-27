@@ -4,9 +4,9 @@ export const Form = ({
   tasks,
   setTasks,
   taskName,
-  setTaskName,
+  onChangeName,
   dueDate,
-  setDueDate,
+  onChangeDueDate,
 }) => {
   const validateRequiredFields = () => {
     if (taskName === "") {
@@ -34,8 +34,8 @@ export const Form = ({
 
   const onSubmit = () => {
     if (validateRequiredFields() && validateDueDate()) {
-      setTaskName("");
-      setDueDate("");
+      onChangeName("");
+      onChangeDueDate("");
       const newTasks = [...tasks, { name: taskName, dueDate, isDone: false }];
       setTasks(newTasks);
     }
@@ -50,7 +50,7 @@ export const Form = ({
             className={styles.input}
             placeholder="タスク名を入力"
             type="text"
-            onChange={(e) => setTaskName(e.target.value)}
+            onChange={(e) => onChangeName(e.target.value)}
             value={taskName}
           />
         </div>
@@ -61,7 +61,7 @@ export const Form = ({
           <input
             className={styles.input}
             type="date"
-            onChange={(e) => setDueDate(e.target.value)}
+            onChange={(e) => onChangeDueDate(e.target.value)}
             value={dueDate}
           />
         </div>
