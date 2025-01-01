@@ -1,4 +1,5 @@
 import styles from "./Form.module.scss";
+import { v4 as uuidv4 } from "uuid";
 
 export const Form = ({
   tasks,
@@ -36,7 +37,10 @@ export const Form = ({
     if (validateRequiredFields() && validateDueDate()) {
       onChangeName("");
       onChangeDueDate("");
-      const newTasks = [...tasks, { name: taskName, dueDate, isDone: false }];
+      const newTasks = [
+        ...tasks,
+        { id: uuidv4(), name: taskName, dueDate, isDone: false },
+      ];
       setTasks(newTasks);
     }
   };
