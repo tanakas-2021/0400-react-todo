@@ -9,17 +9,17 @@ export const Table = ({ tasks, setTasks }) => {
     const newIsDisplayDone = !isDisplayDone;
     setIsDisplayDone(newIsDisplayDone);
   };
-  const toggleTaskStatus = (index) => {
+  const toggleTaskStatus = (id) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task, i) =>
-        i === index ? { ...task, isDone: !task.isDone } : task
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, isDone: !task.isDone } : task
       )
     );
   };
-  const deleteOnClick = (index) => {
+  const deleteOnClick = (id) => {
     const isConfirmed = window.confirm("タスクを削除しますか？");
     if (isConfirmed) {
-      const newTasks = tasks.filter((task, taskIndex) => taskIndex !== index);
+      const newTasks = tasks.filter((task) => task.id !== id);
       setTasks(newTasks);
     }
   };
@@ -41,9 +41,9 @@ export const Table = ({ tasks, setTasks }) => {
         <div className={styles.tableHeaderCell}></div>
       </div>
       <div>
-        {filteredTasks.map((task, index) => {
+        {filteredTasks.map((task) => {
           return (
-            <div className={styles.tableRow} key={index}>
+            <div className={styles.tableRow} key={task.id}>
               <div className={styles.tableCellCenter}>
                 <div
                   className={
@@ -54,7 +54,7 @@ export const Table = ({ tasks, setTasks }) => {
                     <FontAwesomeIcon
                       icon={faCheck}
                       size="2x"
-                      onClick={() => toggleTaskStatus(index)}
+                      onClick={() => toggleTaskStatus(task.id)}
                     />
                   </div>
                 </div>
@@ -65,7 +65,7 @@ export const Table = ({ tasks, setTasks }) => {
                 <FontAwesomeIcon
                   icon={faTrash}
                   className={styles.trashIcon}
-                  onClick={() => deleteOnClick(index)}
+                  onClick={() => deleteOnClick(task.id)}
                 />
               </div>
             </div>
